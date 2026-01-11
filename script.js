@@ -12,7 +12,7 @@ function uploadPDF() {
 
     resultDiv.innerText = "Processing...";
 
-    fetch("BACKEND_API_URL_HERE", {
+    fetch("http://127.0.0.1:5000/upload", {
         method: "POST",
         body: formData
     })
