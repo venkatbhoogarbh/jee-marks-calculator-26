@@ -1,5 +1,5 @@
 function uploadPDF() {
-    const fileInput = document.getElementById("pdfFile");
+    const fileInput = document.getElementById("pdfFile"); // keep your HTML ID
     const resultDiv = document.getElementById("result");
 
     if (!fileInput.files.length) {
@@ -8,7 +8,7 @@ function uploadPDF() {
     }
 
     const formData = new FormData();
-    formData.append("response_pdf", fileInput.files[0]);
+    formData.append("response_sheet", fileInput.files[0]); // match backend key
 
     resultDiv.innerText = "Processing...";
 
@@ -19,7 +19,8 @@ function uploadPDF() {
     .then(response => response.json())
     .then(data => {
         resultDiv.innerHTML = `
-            <p>Total Marks: <b>${data.score}</b></p>
+            <h3>Marks Result</h3>
+            <p>Score: <b>${data.score}</b></p>
             <p>Correct: ${data.correct}</p>
             <p>Wrong: ${data.wrong}</p>
             <p>Unattempted: ${data.unattempted}</p>
